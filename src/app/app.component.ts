@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     // Subscribe
     customObservable
       .pipe(
-        mergeMap((val) => {
+        exhaustMap((val) => {
           return this.api.getAccount(val);
         }),
         catchError((e) => {
@@ -56,7 +56,6 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe((res) => {
-        console.log('response: ', res.id);
         this.fetchedData.push(res);
       });
   }
