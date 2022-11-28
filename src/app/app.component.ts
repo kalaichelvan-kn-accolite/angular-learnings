@@ -12,7 +12,6 @@ import {
   exhaustMap,
   mergeMap,
   switchMap,
-  onErrorResumeNext,
 } from 'rxjs/operators';
 import { ApiService } from './api.service';
 
