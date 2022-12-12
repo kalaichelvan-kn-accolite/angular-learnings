@@ -22,12 +22,7 @@ import { ApiService } from './api.service';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent implements OnInit {
-  comments$: any;
-
-  constructor(private api: ApiService) {
-    // Async pipe
-    this.comments$ = this.api.getComments();
-  }
+  constructor(private api: ApiService) {}
 
   ngOnInit() {}
 }
