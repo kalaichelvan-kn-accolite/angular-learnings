@@ -10,11 +10,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { TestComponent } from './test/test.component';
+import { TestGuard } from './services/test.guard';
 
 const appRoutes: Routes = [
-  // { path: '', component: TestComponent },
-  { path: 'first', component: FirstComponent },
+  {
+    path: 'first',
+    component: FirstComponent,
+    canActivate: [TestGuard],
+    canDeactivate: [TestGuard],
+  },
   { path: 'second', component: SecondComponent },
+  {
+    path: 'lazy',
+    loadChildren: () =>
+      import('./lazy/test-lazy/test-lazy.module').then((m) => m.TestLazyModule),
+  },
   { path: 'test', component: TestComponent, outlet: 'outlet1' },
 ];
 
@@ -26,7 +36,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   declarations: [AppComponent, FirstComponent, SecondComponent, TestComponent],
-  providers: [HttpClient, ApiService],
+  providers: [HttpClient, ApiService, TestGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
