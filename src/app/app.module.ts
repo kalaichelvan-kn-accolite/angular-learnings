@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   // { path: '', component: TestComponent },
   { path: 'first', component: FirstComponent },
   { path: 'second', component: SecondComponent },
+  { path: 'test', component: TestComponent, outlet: 'outlet1' },
 ];
 
 @NgModule({

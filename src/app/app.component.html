@@ -1,7 +1,18 @@
 <div>
   <h1>App page</h1>
-  <a routerLink="../first">First</a><br />
-  <a routerLink="../second">Second</a>
-  <router-outlet name="outlet2"></router-outlet>
+  <a routerLink="first">First</a><br />
+  <a routerLink="second">Second</a><br />
+  <a
+    [routerLink]="[
+      '/',
+      {
+        outlets: {
+          outlet1: 'test'
+        }
+      }
+    ]"
+    >Test</a
+  >
   <router-outlet></router-outlet>
+  <router-outlet name="outlet1"></router-outlet>
 </div>
